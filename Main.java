@@ -119,19 +119,21 @@ public class Main {
         boolean flag = true;
         int r = 0;
         int c = 0;
+        int cont = 0;
         ArrayList <String> comandi = new ArrayList <String> ();
 
 
 
         while(flag) {
 
-            /*
-            gestire caso nessuna soluzione
-            if( ){
+            cont ++;
+
+            //gestire caso nessuna soluzione
+            if(cont >= (numC*numR)) {
                 System.out.println("no soluzione");
                 break;
             }
-            */
+
           //  stampaLab();
             //presupponendo di partire da 0 0
 
@@ -169,6 +171,7 @@ public class Main {
                         lab[r+1][c] = "0"; //segno lo spostamento
                     }
                     r++;
+
                     comandi.add("down");
 
                 } else {
@@ -186,6 +189,7 @@ public class Main {
                             lab[r-1][c] = "0"; //segno lo spostamento
                         }
                         r--;
+
                         comandi.add("up");
 
                     } else {
@@ -204,6 +208,7 @@ public class Main {
                             }
                             lab[r][c - 1] = "0";
                             c--;
+
                             comandi.add("left");
                         } else {
                             //non posso andare sopra sotto dx o sx
