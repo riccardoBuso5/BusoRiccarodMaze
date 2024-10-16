@@ -1,35 +1,48 @@
 package myProj;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
     public  static String[][] lab;
-    public  static int numR = 10;
-    public static int numC  = 10;
+    public  static int numR;
+    public static int numC ;
     public static int[] ultimoBivio = new int[2];
 
     public static void main(String[] args){
 
-
-
-        lab = new String[numR][numC];
-
-        lab[0] =  new String[] {"S",".",".",".","#","#","#","#","#","#"};
-        lab[1] =  new String[] {".","#","#",".","#",".",".",".","E",".","."};
-        lab[2] =  new String[] {".","#","#",".","#",".","#","#","#","#"};
-        lab [3] = new String[] {".",".",".","#",".",".",".",".",".","."};
-        lab[4] =  new String[] {".","#","#",".","#","#","#","#","#","."};
-        lab[5] = new String[] {".",".","#","#","#",".","#","#","#","."};
-        lab[6] = new String[]  {".",".",".","#","#","#","#",".",".","."};
-        lab [7] = new String[] {".",".",".",".",".","#",".",".",".","."};
-        lab[8] = new String[] {"#","#","#","#",".",".","#","#","#","."};
-        lab[9] = new String[]{".",".",".",".",".",".",".",".",".",".","."};
-
+        insertMaze();
 
         stampaLab();
 
        System.out.println(run());
+
+    }
+
+    public static void insertMaze() {
+
+            Scanner sc = new Scanner(System.in);
+            System.out.println("inserire prima riga del labirinto");
+
+            ArrayList <String> maze = new ArrayList<String>();
+            String row = sc.nextLine();
+            maze.addLast(row);
+
+            while(row.compareTo("end") != 0){
+                System.out.println("inserire prossima riga del labirinto o  scrivere end per chiudere");
+                row = sc.nextLine().trim();
+                maze.addLast(row);
+            }
+
+            maze.removeLast();
+            numC = maze.getFirst().length();
+            numR = maze.size();
+            lab = new String[numR][numC];
+
+            for(int i=0;i<numR;i++){
+                lab[i] = maze.get(i).split("");
+            }
 
     }
 
@@ -112,7 +125,15 @@ public class Main {
 
         while(flag) {
 
-            stampaLab();
+            /*
+            gestire caso nessuna soluzione
+            if( ){
+                System.out.println("no soluzione");
+                break;
+            }
+            */
+          //  stampaLab();
+            //presupponendo di partire da 0 0
 
             //controllo se posso andare a dx
             if (c + 1 < numC && lab[r][c + 1].compareTo("#") != 0 && lab[r][c + 1].compareTo("0") != 0) {
