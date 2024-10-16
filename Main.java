@@ -59,7 +59,7 @@ public class Main {
             //bivio = due strade possibili
         boolean flag = false;
 
-            //correggere uno dei due può essere = E
+    
 
             if(c+1 < numC && r+1 <numR) {
                 if(lab[r][c+1].compareTo("E") == 0 && lab[r+1][c].compareTo(".") == 0) {
